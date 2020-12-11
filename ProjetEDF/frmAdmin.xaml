@@ -1,0 +1,70 @@
+﻿<Window x:Class="ProjetEDF.frmAdmin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProjetEDF"
+        mc:Ignorable="d"
+        Title="frmAdmin" Height="450" Width="800" Loaded="Window_Loaded">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="180"></RowDefinition>
+            <RowDefinition Height="35"></RowDefinition>
+            <RowDefinition Height="35"></RowDefinition>
+            <RowDefinition Height="35"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Gestion EDF" FontSize="50" HorizontalAlignment="Center" Grid.ColumnSpan="2"></TextBlock>
+        <TextBlock Text="Liste des controleurs" Grid.Row="1" Grid.Column="0" FontSize="40"></TextBlock>
+        <TextBlock Text="Liste des clients" Grid.Row="1" Grid.Column="1" FontSize="40" HorizontalAlignment="Center"></TextBlock>
+        <ListBox x:Name="lstControleurs" SelectionChanged="lstControleurs_SelectionChanged" Grid.Row="2" Grid.Column="0">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding id}" Width="50"></TextBlock>
+                        <TextBlock Text="{Binding nom}" Width="70"></TextBlock>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <ListBox x:Name="lstClients" SelectionChanged="lstClients_SelectionChanged" Grid.Row="2" Grid.Column="1">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding IdClient}"></TextBlock>
+                        <TextBlock Width="70" Text="{Binding NomClient}" ></TextBlock>
+                        <TextBlock  Text="{Binding PrenomClient}" Width="70"></TextBlock>
+                        <TextBlock  Text="{Binding AncienReleve}" Width="70"></TextBlock>
+                        <TextBlock  Text="{Binding NouveauReleve}" Width="70"></TextBlock>
+                        <TextBlock  Text="{Binding Total}" Width="70"></TextBlock>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <WrapPanel Grid.Row="3" Grid.Column="0">
+            <TextBlock Text="Nom du controleur"></TextBlock>
+            <TextBox x:Name="txtNomControleur" Width="100"></TextBox>
+        </WrapPanel>
+        <WrapPanel Grid.Row="4" Grid.Column="0">
+            <TextBlock Text="Prenom du Controleur"></TextBlock>
+            <TextBox x:Name="txtPrenomControleur" Width="100"></TextBox>
+        </WrapPanel>
+        <WrapPanel Grid.Row="3" Grid.Column="1">
+            <TextBlock Text="Nom du Client"></TextBlock>
+            <TextBox x:Name ="txtNomClient" Width="100"></TextBox>
+        </WrapPanel>
+        <WrapPanel Grid.Row="4" Grid.Column="1">
+            <TextBlock Text="Prenom du client"></TextBlock>
+            <TextBox Name="txtPrenomClient" Width="100"></TextBox>
+        </WrapPanel>
+        <Button x:Name="btnInsererControleur" Grid.Row="5" Grid.Column="0" Content="Insérer Controleur" Width="100"  Click="btnInsererControleur_Click"></Button>
+        <Button x:Name="btnInsererClient" Grid.Row ="5" Grid.Column="1" Content="Insérer Client" Width="100 " Click="btnInsererClient_Click"></Button>
+        
+    </Grid>
+</Window>

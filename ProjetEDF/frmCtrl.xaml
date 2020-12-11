@@ -1,0 +1,41 @@
+﻿<Window x:Class="ProjetEDF.frmCtrl"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProjetEDF"
+        mc:Ignorable="d"
+        Title="frmCtrl" Height="450" Width="800" Loaded="Window_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="180"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Gestion EDF" FontSize="50" HorizontalAlignment="Center" Grid.ColumnSpan="2"></TextBlock>
+        <TextBlock Text="Liste des clients" Grid.Row="1" Grid.Column="1" FontSize="40" HorizontalAlignment="Center"></TextBlock>
+        <ListBox x:Name="lstClients" SelectionChanged="lstClients_SelectionChanged" Grid.Row="2" Grid.Column="1">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding IdClient}" Width="20"></TextBlock>
+                        <TextBlock Text="{Binding NomClient}" Width="70"></TextBlock>
+                        <TextBlock Text="{Binding PrenomClient}" Width="70"></TextBlock>
+                        <TextBlock Text="{Binding AncienReleve}" Width="70"></TextBlock>
+                        <TextBlock Text="{Binding NouveauReleve}" Width="70"></TextBlock>
+                        <TextBlock Text="{Binding Total}" Width="70"></TextBlock>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <WrapPanel Grid.Row="3" Grid.Column="0" VerticalAlignment="Center">
+            <TextBlock Text="Nouveau relevé"></TextBlock>
+            <TextBox x:Name="txtNewReleve" Width="100"></TextBox>
+        </WrapPanel>
+
+        <Button x:Name="btnInsererNewReleve" Content="Insérer nouveau relevé" Grid.Row="4" Click="btnInsererNewReleve_Click" Width="170" HorizontalAlignment="Left"></Button>
+    </Grid>
+</Window>
